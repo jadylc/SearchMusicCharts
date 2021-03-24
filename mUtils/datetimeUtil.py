@@ -33,7 +33,7 @@ class TimeUtil:
         return strTime
  
     def get_chinesedatetime(self):
-        # locale.setlocale(locale.LC_CTYPE, 'chinese')  # 如果是win，需要加上这个，mac 可以不使用
+        locale.setlocale(locale.LC_CTYPE, 'chinese')  # 如果是win，需要加上这个，mac 可以不使用
         strTime = time.strftime("%Y年%m月%d日%H时%M分%S秒", time.localtime())
         return strTime
  

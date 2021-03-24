@@ -19,10 +19,11 @@ from db.mongodb import MyMongodb
 def start():
     timer = threading.Timer(5800, start) 
 
-    all_sheet, all_link, list_song = carw_wangyi_music()
-    carw_qq_music()
-    carw_kugou_music()
-    carw_kuwo_music()
+    all_sheet, all_link, list_song = carw_kuwo_music()
+    #carw_wangyi_music()
+    #carw_qq_music()
+    #carw_kugou_music()
+    #carw_kuwo_music()
     # 网易歌曲详情
     # carw_wangyi_music_details(list_song,all_sheet,all_link)
     timer.start()

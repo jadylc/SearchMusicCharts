@@ -321,10 +321,10 @@ class kuwoCraw():
             except:
                 print('酷wo-切换榜单,未找到元素song_name.text')
                 
-            if song_name.text != '会员畅听榜':
-                song_name.click()
-                time.sleep(1)
-                list_song.append(self.getSongs())
+            #if song_name.text != '会员畅听榜':
+            song_name.click()
+            time.sleep(1)
+            list_song.append(self.getSongs())
         
         return list_name, list_link ,list_song
 
