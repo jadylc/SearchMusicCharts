@@ -8,7 +8,6 @@ from craw.tmeMusic import kuwoCraw
 import config
 from mUtils.bot import FeiShuBot
 import threading #Timer（定时器）是Thread的派生类
-from db.mongodb import MyMongodb
 
 
 """
@@ -19,10 +18,9 @@ from db.mongodb import MyMongodb
 def start():
     timer = threading.Timer(5800, start) 
 
-    all_sheet, all_link, list_song = carw_kuwo_music()
-    #carw_wangyi_music()
-    #carw_qq_music()
-    #carw_kugou_music()
+    all_sheet, all_link, list_song = carw_qq_music()
+    # carw_kugou_music()
+    # carw_wangyi_music()
     #carw_kuwo_music()
     # 网易歌曲详情
     # carw_wangyi_music_details(list_song,all_sheet,all_link)
@@ -41,6 +39,7 @@ def toExcel(data, all_sheet=['sheet1'], filename=''):
         we.put_value_in_area(data[i],sheet_name=all_sheet[i])
     
     f_path = config.FILE_PATH + filename + TimeUtil().get_chinesedatetime() + '.xls'
+    config.check_path()
     we.save_excel(str(f_path))
 
 
@@ -170,13 +169,13 @@ def carw_qq_music():
     爬取QQ音乐排行榜
     """
     qq = qqCraw()
-    qq.start_handless()
+    qq.start_headless()
     # qq.start_ui()
     all_sheet, all_link, list_song = qq.getAllData()
     qq.quit()
-    toExcel(data = list_song, all_sheet=all_sheet, filename='qq音乐排行榜')
+    toExcel(data=list_song, all_sheet=all_sheet, filename='qq音乐排行榜')
     # 查看是否有命中的歌曲
-    objective_songs(list_song, all_sheet, all_link)
+    # objective_songs(list_song, all_sheet, all_link)
 
 
 def objective_songs(data, all_sheet, all_link):

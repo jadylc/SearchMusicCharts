@@ -25,6 +25,7 @@ class TimeUtil:
         return time.strftime("%Y-%m-%d %H:%M:%S")
  
     def get_chinesedate(self):
+        locale.setlocale(locale.LC_CTYPE, 'chinese')
         strTime = time.strftime("%Y年%m月%d日", time.localtime())
         return strTime
  
